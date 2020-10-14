@@ -17,10 +17,11 @@ def rawMbrData(diskpath = ""):
 	if (diskpath != ""):
 		try:
 			with open(diskpath, 'rb') as fp:
-				hex_list = ["{:02x}".format(ord(c)) for c in fp.read(512)]
+				hex_list = ["{:02x}".format(c) for c in fp.read(512)]
 			fp.close();
 			return hex_list
-		except:
+		except Exception as e:
+			print (e)
 			print ("Input file/device not found")
 			print ("Terminating..!!!")
 			exit()
